@@ -1,7 +1,7 @@
 import pygame
 
-from display import WINDOW_WIDTH, WINDOW_HEIGHT
-from bullet import Bullet
+from GUI.display import WINDOW_WIDTH, WINDOW_HEIGHT
+from GUI.bullet import Bullet
 
 
 vector = pygame.math.Vector2

@@ -1,6 +1,6 @@
 import pygame, random
 
-from display import WINDOW_WIDTH, WINDOW_HEIGHT
+from GUI.display import WINDOW_WIDTH, WINDOW_HEIGHT
 
 
 vector = pygame.math.Vector2

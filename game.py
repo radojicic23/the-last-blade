@@ -1,9 +1,9 @@
 import pygame, random, sys
 
-from display import display_surface, WINDOW_WIDTH, WINDOW_HEIGHT
-from player import Player
-from zombie import Zombie
-from ruby import Ruby
+from GUI.display import display_surface, WINDOW_WIDTH, WINDOW_HEIGHT
+from GUI.player import Player
+from GUI.zombie import Zombie
+from GUI.ruby import Ruby
 
 
 FPS = 60

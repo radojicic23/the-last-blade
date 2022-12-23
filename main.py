@@ -1,12 +1,12 @@
 import pygame
 
-from display import display_surface
-from tiles import Tile
-from decorations import Decoration
-from player import Player
-from ruby import RubyMaker
-from portal import Portal
-from background import Background
+from GUI.display import display_surface
+from GUI.tiles import Tile
+from GUI.decorations import Decoration
+from GUI.player import Player
+from GUI.ruby import RubyMaker
+from GUI.portal import Portal
+from GUI.background import Background
 from game import Game
 
 

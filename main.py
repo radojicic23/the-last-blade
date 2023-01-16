@@ -118,7 +118,7 @@ for i in range(len(tile_map)):
            
 # Create a game
 my_game = Game(my_player, my_zombie_group, my_platform_group, my_portal_group, my_bullet_group, my_ruby_group, my_background_group)
-my_game.pause_game("The Last Blade", "Press 'Enter'to begin")
+my_game.pause_game("The Last Blade", "Press 'Enter' to begin")
 pygame.mixer.music.play(-1, 0.0)
 
 # The main game loop

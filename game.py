@@ -29,6 +29,7 @@ class Game:
         self.hud_font = pygame.font.Font("Assets/fonts/Pixel.ttf", 24)
         
         # Set sounds
+        self.menu_sound = pygame.mixer.Sound("Assets/sounds/menu_music.wav")
         self.lost_ruby_sound = pygame.mixer.Sound("Assets/sounds/lost_ruby.wav")
         self.pickup_ruby_sound = pygame.mixer.Sound("Assets/sounds/ruby_pickup.wav")
         pygame.mixer.music.load("Assets/sounds/level_music.wav")
@@ -171,17 +172,23 @@ class Game:
         self.ruby_group.empty()
         self.bullet_group.empty()
         self.player.reset()
-        self.pause_game("You survived!", "Press 'Enter' to continue..")
+        self.pause_game2("You survived!", "Press 'Enter' to continue..")
     
     def pause_game(self, main_text, sub_text):
         """Pause the game"""
         global running
         
         pygame.mixer.music.stop()
+        self.menu_sound.play()
         
         # Set colors
         WHITE = (255, 255, 255)
         BLACK = (0, 0, 0)
+        
+        # Create background 
+        background_image = pygame.transform.scale(pygame.image.load('Assets/1.png'), (1280, 736))
+        background_rect = background_image.get_rect()
+        background_rect.topleft = (0, 0)
         
         # Create main pause text
         main_text = self.title_font.render(main_text, True, WHITE)
@@ -193,7 +200,53 @@ class Game:
         sub_rect = sub_text.get_rect()
         sub_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 64)
         
-        # Display the pause text
+        # Display the pause text and background
+        display_surface.blit(background_image, background_rect)
+        display_surface.blit(main_text, main_rect)
+        display_surface.blit(sub_text, sub_rect)
+        pygame.display.update()
+        
+        # Pause the game until user hits enter or quits
+        is_paused = True
+        while is_paused:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    is_paused = False
+                    sys.exit()
+                if event.type == pygame.KEYDOWN:
+                    # User wants to continue
+                    if event.key == pygame.K_RETURN:
+                        is_paused = False
+                        pygame.mixer.music.play(-1, 0.0)
+    
+    def pause_game2(self, main_text, sub_text):
+        """Pause the game"""
+        global running
+        
+        pygame.mixer.music.stop()
+        
+        # Set colors
+        WHITE = (255, 255, 255)
+        BLACK = (0, 0, 0)
+        
+        # Create background 
+        #background_image = pygame.transform.scale(pygame.image.load('Assets/1.png'), (1280, 736))
+        #background_rect = background_image.get_rect()
+        #background_rect.topleft = (0, 0)
+        
+        # Create main pause text
+        main_text = self.title_font.render(main_text, True, WHITE)
+        main_rect = main_text.get_rect()
+        main_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2)
+        
+        # Create sub pause text
+        sub_text = self.title_font.render(sub_text, True, WHITE)
+        sub_rect = sub_text.get_rect()
+        sub_rect.center = (WINDOW_WIDTH//2, WINDOW_HEIGHT//2 + 64)
+        
+        # Display the pause text and background
+        #display_surface.blit(background_image, background_rect)
         display_surface.fill(BLACK)
         display_surface.blit(main_text, main_rect)
         display_surface.blit(sub_text, sub_rect)

@@ -230,11 +230,6 @@ class Game:
         WHITE = (255, 255, 255)
         BLACK = (0, 0, 0)
         
-        # Create background 
-        #background_image = pygame.transform.scale(pygame.image.load('Assets/1.png'), (1280, 736))
-        #background_rect = background_image.get_rect()
-        #background_rect.topleft = (0, 0)
-        
         # Create main pause text
         main_text = self.title_font.render(main_text, True, WHITE)
         main_rect = main_text.get_rect()
